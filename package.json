@@ -27,13 +27,30 @@
     "onLanguage:typescriptreact",
     "onLanguage:javascriptreact"
   ],
+  "contributes": {
+    "configuration": {
+      "title": "Simple Vitest Runner Configuration",
+      "properties": {
+        "simpleVitestRunner.runCommand": {
+          "type": "string",
+          "default": "npx vitest",
+          "description": "Run command for vitest"
+        },
+        "simpleVitestRunner.runPath": {
+          "type": "string",
+          "default": null,
+          "description": "The path in which to run tests"
+        }
+      }
+    }
+  },
   "devDependencies": {
     "@types/vscode": "^1.65.0",
+    "@vscode/vsce": "^2.22.0",
     "esbuild": "^0.14.27",
     "prettier": "^2.6.0",
     "typescript": "^4.6.2",
-    "vitest": "^0.34.1",
-    "vsce": "^2.7.0"
+    "vitest": "^0.34.1"
   },
   "scripts": {
     "build": "esbuild ./src/index.ts  --bundle --outdir=dist --sourcemap --external:vscode --external:typescript --platform=node --format=cjs",
@@ -43,6 +60,6 @@
     "format:write": "yarn format:check --write"
   },
   "dependencies": {
-    "find-up": "^5.0.0"
+    "find-up": "^6.3.0"
   }
 }
